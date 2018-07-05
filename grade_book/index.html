@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> Электронный журнал - Озеров Данил ИА-032 </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="referrer" content="no-referrer">
+		<style>
+			* {
+				font-size: 16px;
+				padding: 0;
+				margin: 0;
+				border: none;
+				font-family: Arial, Helvetica, sans-serif;
+				font-weight: normal;
+				outline: none;
+				border-radius: 0;
+				box-sizing: border-box;
+			}
+
+			b {
+				font-weight: bold;
+			}
+
+			a {
+				color:#07a;
+				text-decoration: none;
+			}
+			a:hover {
+				text-decoration: solid underline;
+			}
+
+			html {
+				min-width: 320px;
+				min-height: 100vh;
+			}
+
+			body {
+				background-color: #ffffff;
+			}
+
+			#viewport {
+				display:inline-block;
+			}
+
+			#header_wrapper {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+			}
+
+			#header {
+				width: 100%;
+				padding: 16px 64px 16px 64px;
+				color: #07a;
+				background-color: #eee;
+				cursor: pointer;
+				user-select: none;
+			}
+
+			#phrase {
+				font-size: 18px;
+				font-style: italic;
+				color: #888;
+			}
+
+			#header_title {
+				font-size: 32px;
+				font-weight: bold;
+				color: #07a;
+			}
+			#header:hover #header_title {
+				text-decoration: underline;
+			}
+
+			#nav_bar {
+				font-size: 32px;
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				justify-content: start;
+				align-items: center;
+				align-content: center;
+				flex-wrap: wrap;
+				background-color: #07a;
+				color: #fff;
+			}
+			.nav_btn {
+				user-select: none;
+				padding: 8px;
+				cursor: pointer;
+			}
+			.nav_btn:hover {
+				text-decoration: underline;
+				background-color: #058;
+			}
+			.nav_active {
+				font-weight: bold;
+				text-decoration: underline;
+			}
+
+			input[type="file"] {
+				display: none;
+			}
+			.file_upload_btn {
+				padding: 6px 12px;
+				cursor: pointer;
+			}
+
+			table {
+				border-collapse: separate;
+				border-spacing: 0;
+			}
+			th, td {
+				border: 1px solid #ccc;
+				padding: 8px;
+			}
+			thead {
+				position: sticky;
+				background-color: #fff;
+			}
+			.input_td {
+				padding: 0;
+			}
+
+			.frame_padded {
+				padding: 0 64px 0 64px;
+			}
+
+			.big_btn {
+				display: inline-block;
+				padding: 16px;
+				cursor: pointer;
+				text-align: center;
+				user-select: none;
+			}
+
+			.big_btn:hover {
+				text-decoration: underline;
+			}
+
+			.clickable {
+				padding: 4px;
+				cursor: pointer;
+				text-align: center;
+				user-select: none;
+			}
+
+			.clickable:hover {
+				text-decoration: underline;
+			}
+
+			.table_set:hover {
+				text-decoration: underline;
+				background-color: #058;
+			}
+
+			.table_del:hover {
+				text-decoration: underline;
+				background-color: #a01;
+			}
+
+			.table_del {
+				color: #fff;
+				background-color: #c03;
+			}
+
+			.table_set {
+				color: #fff;
+				background-color: #07a;
+			}
+
+			tbody tr:nth-child(odd) {
+				background-color: #eee;
+			}
+			tbody tr:nth-child(even) {
+				background-color: #fff;
+			}
+
+			th {
+				text-align: left;
+				font-weight: bold;
+			}
+
+			td input[type="text"] {
+				box-sizing: border-box;
+				background-color: transparent;
+				min-width: 100%;
+				width: 120px;
+				padding: 8px;
+			}
+
+			.graphs_group {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+			}
+			.graph_wrapper {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: start;
+				align-content: start;
+				padding-left: 8px;
+				padding-right: 8px;
+			}
+			.graph_section {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				align-content: center;
+				max-width: 120px;
+			}
+			.graph_field {
+				display: flex;
+				flex-direction: column;
+				justify-content: end;
+				align-items: center;
+				align-content: center;
+				max-width: 60px;
+			}
+			.graph_caption {
+				padding: 4px;
+			}
+			.graph_bar {
+				margin-left: 4px;
+				margin-right: 4px;
+				width: 32px;
+				background-color: #07a;
+			}
+			.graph_border {
+				width: 100%;
+				height: 2px;
+				background-color: #000;
+			}
+			.graph_title {
+				text-align: center;
+				padding: 10px 10px 0px 10px;
+			}
+			.graph_footer {
+				text-align: center;
+				padding: 10px;
+			}
+			.flex_vert {
+				display: flex;
+				flex-direction: column;
+				justify-content: start;
+				align-items: start;
+				align-content: start;
+			}
+
+			select {
+				color: #fff;
+				background-color: #07a;
+				padding: 4px;
+			}
+
+			select:hover {
+				text-decoration: underline;
+			}
+
+			.hidden_default {
+				display: none;
+			}
+
+			.title {
+				font-size: 24px;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="viewport" class="frame_padded">
+			<div style="display:none" id="frame_import">
+				<br/>
+				<span class="title"> Импорт таблицы успеваемости </span><br/>
+				<br/>
+				Здесь вы можете выбрать CSV файл с вашего компьютера, из которого вы хотите импортировать таблицу успеваемости.<br/>
+				<br/>
+				<label class="big_btn table_set" for="file_input"> Импортировать файл</label><br/>
+				<br/>
+				<div class="hidden_default">
+					<b> Содержимое таблицы: </b><br/>
+					<br/>
+					<input type="file" id="file_input" accept=".csv">
+					<table id="import_table"><thead></thead><tbody></tbody></table>
+					<br/>
+				</div>
+			</div>
+			<div style="display:none" id="frame_export">
+				<br/>
+				<span class="title"> Экспорт таблицы успеваемости </span><br/>
+				<br/>
+				<div class="shown_default">Пожалуйста, сначала импортируйте таблицу.</div>
+				<div class="hidden_default">
+					Здесь вы можете скачать таблицу таблица успеваемости на ваш компьютер в формате CSV.<br/>
+					<br/>
+					<a id="export_btn" class="big_btn table_set" download="grades.csv" class="nav_btn">Экспортировать в файл</a><br/>
+				</div>
+				<br/>
+			</div>
+			<div style="display:none" id="frame_edit">
+				<br/>
+				<span class="title"> Редактирование таблицы успеваемости </span><br/>
+				<br/>
+				<div class="shown_default">Пожалуйста, сначала импортируйте таблицу.</div>
+				<div class="hidden_default">
+					Здесь вы редактировать оценки учеников.<br/>
+					Для удаления записи об ученике нажмите кнопку <b>Удалить</b> в правом краю таблицы.<br/>
+					Чтобы изменить или добавить запись об ученике, заполните соответсвующие текстовые поля, расположеные в самом низу таблицы и нажмите кнопку <b>Записать</b>. Если запись о данном ученике уже существует, его оценки будут изменены на новые.<br/>
+					<br/>
+					<table id="modification_table"><thead></thead><tbody></tbody></table>
+				</div>
+				<br/>
+			</div>
+			<div style="display:none" id="frame_table">
+				<br/>
+				<span class="title"> Таблица успеваемости </span><br/>
+				<br/>
+				<div class="shown_default">Пожалуйста, сначала импортируйте таблицу.</div>
+				<div class="hidden_default">
+					Здесь вы можете просмотреть обобщённую статистику в табличном виде.<br/>
+					<br/>
+					<table id="stats_table"><thead><tr>
+						<th>Предмет</th><th>Класс</th>
+						<th>Средний балл</th><th>Медиана</th>
+						<th>5%</th><th>4%</th><th>3%</th><th>2%</th><th>1%</th>
+						<th>5 к-во</th><th>4 к-во</th><th>3 к-во</th><th>2 к-во</th><th>1 к-во</th>
+					</tr></thead><tbody></tbody></table>
+				</div>
+				<br/>
+			</div>
+			<div style="display:none" id="frame_graph">
+				<br/>
+				<span class="title"> Графики успеваемости </span><br/>
+				<br/>
+				<div class="shown_default">Пожалуйста, сначала импортируйте таблицу.</div>
+				<div class="hidden_default">
+					<br/>
+					Здесь вы можете просмотреть обобщённую статистику в графическом виде.<br/>
+					Для начала выберите интересующий вас предмет.<br/>
+					<br/>
+					<span>Предмет: </span><select id="subject_selector"></select><br/>
+					<br/>
+					<div id="graphs_div"></div>
+				</div>
+				<br/>
+			</div>
+			<div style="display:none" id="frame_help">
+				<br/>
+				<span class="title"> О сайте </span><br/>
+				<br/>
+				Электронный журнал это одностраничный веб-сайт позволяющий просматривать, редактировать и анализировать оценки учащихся.<br/>
+				<br/>
+				<span class="title"> Как ползьоваться </span><br/>
+				<br/>
+				Для начала вам следует загрузить CSV таблицу с оценками учащихся.<br/>
+				Для этого перейдите во вкладку <b>Импорт</b> и загрузите CSV файл, нажав на кнопку <b>Импортировать файл</b>.<br/>
+				<br/>
+				<span class="title"> Редактирование оценок </span><br/>
+				<br/>
+				Вы можете добавить, изменить или удалить оценки учащихся перейдя во вкладку <b>Редактировать оценки</b>.<br/>
+				Для удаления записи об ученике нажмите кнопку <b>Удалить</b> в правом краю таблицы.<br/>
+				Чтобы изменить или добавить запись об ученике, заполните соответсвующие текстовые поля, расположеные в самом низу таблицы и нажмите кнопку <b>Записать</b>. Если запись о данном ученике уже существует, его оценки будут изменены на новые.<br/>
+				<br/>
+				<span class="title"> Сохранение изменений </span><br/>
+				<br/>
+				Сайт автомотически запоминает ваши изменения даже при закрытии страницы. Если же вы хотите экспортировать таблицу, перейдите во вкладку <b>Экспорт</b> и нажмите на <b>Экспортировать в файл</b>.<br/>
+				<br/>
+				<span class="title"> Просмотр обобщённой статистики 😎 </span><br/>
+				<br/>
+				Сайт выводит обобщённую статистику по успеваемости. Воспользуйтесь вкладкой <b>Таблица успеваемости</b> для просмотра статистики в табличном виде, или воспользуйтесь вкладкой <b>Графики успеваемости</b> для просмотра в графическом представлении.<br/>
+				<br/>
+			</div>
+			<div style="display:none" id="frame_about">
+				<br/>
+				<span class="title"> О разработчике </span><br/>
+				<br/>
+				<b>Имя:</b> Озеров Данил<br/>
+				<b>Группа:</b> ИА-032<br/>
+				<b>Сайт:</b> <a href="https://danbit.ru/">danbit.ru</a><br/>
+				<b>Email:</b> <a href="mailto:danilozerovmail@gmail.com">danilozerovmail@gmail.com</a><br/>
+				<br/>
+			</div>
+		</div>
+		<div id="header_wrapper">
+			<div id="header" class="frame_padded" onclick="openTab('help')">
+				<span id="header_title">Электронный журнал</span> <span id="phrase"></span>
+			</div>
+			<div id="nav_bar" class="frame_padded">
+				<div class="nav_btn" id="nav_import" onclick="openTab('import')">Импорт</div>
+				<div class="nav_btn" id="nav_export" onclick="openTab('export')">Экспорт</div>
+				<div class="nav_btn" id="nav_edit" onclick="openTab('edit')">Редактировать оценки</div>
+				<div class="nav_btn" id="nav_table" onclick="openTab('table')">Таблица успеваемости</div>
+				<div class="nav_btn" id="nav_graph" onclick="openTab('graph')">Графики успеваемости</div>
+				<div class="nav_btn" id="nav_help" onclick="openTab('help')">Помощь</div>
+				<div class="nav_btn" id="nav_about" onclick="openTab('about')">О разработчике</div>
+			</div>
+		</div>
+		<script>
+			const fileSelector = document.getElementById("file_input");
+			const subjectSelector = document.getElementById("subject_selector");
+			const importTable = document.getElementById("import_table");
+			const modificationTable = document.getElementById("modification_table");
+			const statsTable = document.getElementById("stats_table");
+			const graphsDiv = document.getElementById("graphs_div");
+			const phraseDiv = document.getElementById("phrase");
+			const exportBtn = document.getElementById("export_btn");
+
+			const phrases = [
+				"Wololo!",
+				"Hoi! Welcom to, da TEM SHOP!",
+				"Purification in progress!",
+				"It fills you with determination!",
+				"Beep-boop, scanning soup!",
+				"Never gonna give you up!",
+				"Crudux Cruo!",
+				"Hail to the king, baby!",
+				"Finally, some sci-fi mumbo-jumbo!",
+				"Haggstrom by C418!",
+				"640K ought to be enough for anyone!",
+				"Mudcrabs taking over everything!",
+				"Rip & Tear!",
+				"Now on your Tik-Tok feed!",
+			];
+			let phrase_idx = phrases.length-1;
+
+			const ALL_CLASSES = "все классы";
+
+			const names_map = new Map();
+			names_map.set("name", "ФИО");
+			names_map.set("class", "Класс");
+			names_map.set("informatics", "Информатика");
+			names_map.set("physics", "Физика");
+			names_map.set("mathemathics", "Математика");
+			names_map.set("literature", "Литература");
+			names_map.set("music", "Музыка");
+			function rename(name) {
+				return names_map.get(name) || name;
+			}
+			const input_map = new Map();
+			input_map.set("name", "Введите ФИО ученика...");
+			input_map.set("class", "Класс...");
+
+			const subjects = ["informatics","physics","mathemathics","literature","music"];
+
+			class Group {
+				average = 0.0;
+				median = 0.0;
+				min = 0;
+				max = 0;
+				count = 0;
+				grades = [0,0,0,0,0];
+			};
+
+			let lines = [];
+			const pos_mapping = new Map();
+
+			function getOrInsertGroup(groupsMap, group) {
+				let group_entry = groupsMap.get(group);
+				if (group_entry === undefined) {
+					group_entry = new Group();
+					groupsMap.set(group, group_entry);
+				}
+				return group_entry;
+			}
+			function makeChart(header, titles, values, max, captions) {
+				max = Math.max(max, values.reduce((a,b)=>Math.max(a,b)));
+				let ret = "<div class=\"graph\"><div class=\"graph_wrapper\">";
+				for(let i = 0; i != titles.length; i++) {
+					ret += "<div class=\"graph_section\"><div class=\"graph_field\" style=\"height:224px\">\
+					<div class=\"graph_caption\">"+captions(values[i])+"</div>\
+					<div class=\"graph_bar\" style=\"height:"+(200*values[i]/max)+"px\"></div>\
+					</div>\
+					<div class=\"graph_border\"></div>\
+					<div class=\"graph_title\">"+titles[i]+"</div></div>";
+				}
+				if (header.length != 0) {
+					ret += "</div><div class=\"graph_footer\">"+header+"</div></div>";
+				} else {
+					ret += "</div></div>";
+				}
+				return ret;
+			}
+
+			function loadedFile(csv) {
+				if (exportBtn.href) {
+					URL.revokeObjectURL(exportBtn.href);
+				}
+				exportBtn.href = URL.createObjectURL(new Blob([csv], {type: "text/csv"}));
+
+				lines = csv.split("\n").filter(l => l.trim().length != 0).map(l => l.split(";").map(s=>s.trim()));
+
+				pos_mapping.clear();
+				const subjects_groups = new Map();
+				for(subject of subjects) {
+					subjects_groups.set(subject, new Map());
+				}
+				let idx = 0;
+				let thead = "<tr>";
+				let thead_editable = "<tr>";
+				for (let col of lines[0]) {
+					pos_mapping.set(col, idx++);
+					thead += "<th>"+rename(col)+"</th>";
+					thead_editable += "<th>"+rename(col)+"</th>";
+				}
+				thead += "</tr>";
+				thead_editable += "<th>Модефицировать</th></tr>";
+				let tbody = "";
+				let tbody_editable = "";
+				for(let i = 1; i != lines.length; i++) {
+					tbody += "<tr>";
+					for (let col of lines[i]) {
+						tbody += "<td>"+col+"</td>";
+						tbody_editable += "<td>"+col+"</td>";
+					}
+					tbody_editable += "<td><div class=\"table_del clickable\" onclick=\"deleteRow("+i+")\">Удалить</div></td></tr>";
+					tbody += "</tr>";
+
+					const clazz = lines[i][pos_mapping.get("class")];
+					for (let subject of subjects) {
+						const grade = parseInt(lines[i][pos_mapping.get(subject)], 10);
+						let subject_groups = subjects_groups.get(subject);
+						let clazz_group = getOrInsertGroup(subject_groups, clazz);
+						let all_classes_group = getOrInsertGroup(subject_groups, ALL_CLASSES);
+						for(group of [clazz_group, all_classes_group]) {
+							group.grades[grade-1]++;
+							group.average += grade;
+							group.min = Math.min(group.min, grade);
+							group.max = Math.max(group.max, grade);
+							group.count++;
+						}
+					}
+				}
+				for (let i = 0; i != lines[0].length; i++) {
+					tbody_editable += "<td class=\"input_td\"><input type=\"text\" placeholder=\""+(input_map.get(lines[0][i]) || "Оценку...")+"\"></input></td>";
+				}
+				tbody_editable += "<td><div class=\"table_set clickable\" onclick=\"setRow()\">Записать</div></td></tr>";
+
+				importTable.childNodes[0].innerHTML = thead;
+				importTable.childNodes[1].innerHTML = tbody;
+				modificationTable.childNodes[0].innerHTML = thead_editable;
+				modificationTable.childNodes[1].innerHTML = tbody_editable;
+				let hidden = document.getElementsByClassName("hidden_default");
+				while(hidden.length !== 0) {
+					hidden[0].classList.remove("hidden_default");
+				}
+				for(let e of document.getElementsByClassName("shown_default")) {
+					e.style.display = "none";
+				}
+
+				let graph_body = "";
+				tbody = "";
+				let subject_id = "";
+				let subject_selector = "";
+				for(let [subject_name, subject_groups] of subjects_groups.entries()) {
+					subject_selector += "<option value=\""+ (subject_id++) +"\">"+rename(subject_name)+"</option>";
+
+					const sortedGroups = Array.from(subject_groups.entries()).sort((a, b)=>a[0].localeCompare(b[0]));
+
+					graph_body += "<div style=\"display:none\">";
+					for(let [groupName, group] of sortedGroups) {
+						group.average /= group.count;
+						group.median = (group.max - group.min) / 2;
+						
+						tbody += "<tr>\
+						<td>" + rename(subject_name) + "</td>\
+						<td>" + groupName + "</td>\
+						<td>" + group.average.toFixed(2) + "</td>\
+						<td>" + group.median.toFixed(2) + "</td>";
+						const percentages = [];
+						for(let i = 4; i != -1; i--) {
+							const percentage = 100 * group.grades[i] / group.count;
+							percentages.push(percentage);
+							tbody += "<td>" + Math.round(percentage) + "%</td>";
+						}
+						for(let i = 4; i != -1; i--) {
+							tbody += "<td>" + group.grades[i] + "</td>";
+						}
+						tbody += "</tr>";
+						graph_body += "<b class=\"title\"><br/><br/>"+rename(subject_name) + ", "+ groupName+":</b><div class=\"graphs_group\">";
+						graph_body += makeChart("", ["Средний<br/>балл", "Медиана<br/>оценок"], [group.average, group.median], 5, n => n.toFixed(2));
+						graph_body += makeChart("Количество баллов<br/>в процентах", ["5", "4", "3", "2", "1"], percentages, 100, n => Math.round(n)+"%");
+						graph_body += makeChart("Количество баллов", ["5", "4", "3", "2", "1"], group.grades.reverse(), 1, n=>n);
+						graph_body += "</div>";
+					}
+					graph_body += "</div>";
+				}
+				subjectSelector.innerHTML = subject_selector;
+				statsTable.childNodes[1].innerHTML = tbody;
+				statsTable.style.display = "block";
+				graphsDiv.innerHTML = graph_body;
+				current_subject = 0;
+				subjectSelector.value = "0";
+				graphsDiv.childNodes[0].style.display = "block";
+			}
+
+			function compileLines() {
+				return lines.map(l=>l.join("; ")).join("\n");
+			}
+
+			function deleteRow(i) {
+				lines.splice(i,1);
+				const csv = compileLines();
+				localStorage.setItem("csv", csv);
+				loadedFile(csv);
+			}
+
+			function setRow() {
+				let lastRow = modificationTable.childNodes[1].lastChild;
+				let namePos = pos_mapping.get("name");
+				let name = lastRow.childNodes[namePos].firstChild.value.trim();
+				let newValue = [];
+				for (let i = 0; i != lastRow.childNodes.length-1; i++) {
+					newValue.push(lastRow.childNodes[i].firstChild.value.trim());
+				}
+				for (let i = 0; i != lines.length; i++) {
+					if (lines[i][namePos] === name) {
+						lines[i] = newValue;
+						newValue = undefined;
+						break;
+					}
+				}
+				if (newValue) {
+					lines.push(newValue);
+				}
+				const csv = compileLines();
+				localStorage.setItem("csv", csv);
+				loadedFile(csv);
+			}
+
+			const fileReader = new FileReader();
+			fileReader.addEventListener("load", e => {
+				localStorage.setItem("csv", e.target.result);
+				loadedFile(e.target.result);
+			});
+
+			fileSelector.addEventListener("change", () => {
+				fileReader.readAsText(fileSelector.files[0]);
+			});
+
+			let current_subject = 0;
+			subjectSelector.addEventListener("change", () => {
+				graphsDiv.childNodes[current_subject].style.display = "none";
+				current_subject = parseInt(subjectSelector.value, 10);
+				graphsDiv.childNodes[current_subject].style.display = "block";
+			});
+
+			let current_tab = "";
+			function openTab(tab_name) {
+				if(++phrase_idx === phrases.length) {
+					phrases.sort(() => Math.random() - 0.5);
+					phrase_idx = 0;
+				}
+				phraseDiv.innerText = " - "+phrases[phrase_idx];
+
+				if (tab_name !== current_tab) {
+					if (current_tab.length !== 0) {
+						document.getElementById("frame_"+current_tab).style.display = "none";
+						document.getElementById("nav_"+current_tab).classList.remove("nav_active");
+					}
+					document.getElementById("frame_"+tab_name).style.display = "block";
+					document.getElementById("nav_"+tab_name).classList.add("nav_active");
+					current_tab = tab_name;
+					localStorage.setItem("tab", tab_name);
+				}
+				onResizeListener();
+			}
+
+			function onResizeListener() {
+				const header_height = document.getElementById("header_wrapper").clientHeight+"px";
+				document.getElementById("viewport").style.paddingTop = header_height;
+				for(let e of document.getElementsByTagName("thead")) {
+					e.style.top = header_height;
+				}
+			}
+			window.addEventListener("resize", onResizeListener);
+
+			{
+				onResizeListener();
+				const csv = localStorage.getItem("csv");
+				if (csv) {
+					loadedFile(csv);
+				}
+				openTab(localStorage.getItem("tab") || "help");
+			}
+		</script>
+	</body>
+</html>

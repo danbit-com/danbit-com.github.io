@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> DanBit.ru </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="referrer" content="no-referrer">
+		<link rel="preload" as="style" href="/res/landing.css">
+		<link rel="stylesheet" type="text/css" href="/res/landing.css">
+		<script src="https://kit.fontawesome.com/3fd9c8761a.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<script>
+			if (localStorage.getItem("theme") === "true") {
+				document.body.setAttribute("data-theme", "");
+			}
+
+			function switch_theme() {
+				let theme = document.body.toggleAttribute("data-theme");
+				localStorage.setItem("theme", theme);
+			}
+		</script>
+		<div id="header">
+			<div id="huge_wrapper">
+				<div id="my_name"> Озеров Данил </div>
+				<div id="description"> Программист, веб-разработчик </div>
+			</div>
+			<div id="switch" onclick="switch_theme()"><div id="switch_circle"></div></div>
+		</div>
+		<div class="v_pad"></div>
+		Я интересуюсь созданием backend'а и frontend'а веб-приложений, программированием графики, процедурной генерацией и написанием игр для слабых систем.<br/>
+		<div class="v_pad"></div>
+		<div class="list_title"> Мои проекты </div>
+		<div class="v_pad"></div>
+		<div class="section">
+			<div class="project">
+				<div class="screenshots">
+					<img src="/res/qnez_1.png"/>
+					<img src="/res/qnez_2.png"/>
+					<img src="/res/qnez_3.png"/>
+				</div>
+				<div class="description">
+					<div class="title"> QnEZ </div><br/>
+					<a target="_blank" href="https://chrome.google.com/webstore/detail/qnez/gioheihcdpjmbmjkbbikkgecjhbmblim"> <i class="fab fa-chrome"></i> <u>Chrome Web Store</u></a><br/>
+					<a target="_blank" href="https://addons.mozilla.org/en-US/firefox/addon/qnez/"> <i class="fab fa-firefox-browser"></i> <u>Firefox Addons</u></a><br/>
+					<a target="_blank" href="https://github.com/q2p/QnEZ/"> <i class="fab fa-github"></i> <u>GitHub</u> </a><br/>
+					<br/>
+					Многозадачное расширение для браузеров.<br/>
+					<br/>
+					Возможности:<br/>
+					<br/>
+					<ul>
+						<li>
+							<b>Улучшение производительности</b><br/>
+							При сильной нагрузке браузера, расширение может освободить память и ослабить нагрузку на процессор путём заморозки неактивных вкладок.
+						</li>
+						<br/>
+						<li>
+							<b> Быстрая загрузка файлов </b><br/>
+							Расширение добавляет кнопку быстрого меню, которая в одно нажатие скачивает файл, не раздражая пользователя всплывающими окнами.<br/>
+							Работает на изображениях, видео, аудио файлах, HTML страницах и ссылках.
+						</li>
+						<br/>
+						<li>
+							<b> Моментальный отклик </b><br/>
+							Даже при нагрузке процессора на 90%, расширение способно мгновенно загрузиться, заморозить вкладки и ускорить работу браузера.
+						</li>
+						<br/>
+						<li>
+							<b> Конвертация выбранных вкладок в закладки </b><br/>
+							Если вкладки вам в данный момент не нужны, но вы хотите воспользоваться ими позже, расширение может сохранить их в закладки и освободить рабочее пространство, всего за пару нажатий.
+						</li>
+						<br/>
+						<li>
+							<b> Назначение горячих клавиш </b>
+						</li> <br/>
+					</ul>
+					<b>Технологии:</b> Sass, TypeScript, Chrome API
+				</div>
+			</div>
+		</div>
+		<div class="section">
+			<div class="project">
+				<div class="screenshots">
+					<img class="dark_bg" src="/res/software_renderer_2.png"/>
+				</div>
+				<div class="description">
+					<div class="title"> 3D Software Renderer </div><br/>
+					<a target="_blank" href="/projects/software_renderer/"> <i class="fas fa-cubes"></i> <u>Онлайн Демо</u> </a><br/>
+					<a target="_blank" href="https://github.com/q2p/software_rendering_experiments"> <i class="fab fa-github"></i> <u>GitHub</u></a><br/>
+					<br/>
+					Традиционно отрисовкой трёхмерной графики, занимаются видеокарты. Их главным преимуществом является высокая многопоточность.<br/>
+					<br/>
+					Однако аппаратной отрисовке есть альтернатива: программный ренденринг.
+				</div>
+			</div>
+			<br/>
+			Чтобы улучшить своё понимание трёхмерной графики, я написал <a target="_blank" href="/projects/software_renderer/"> <u>демо</u></a>.<br/>
+			<br/>
+			Особенности и свойства программной отрисовки:<br/>
+			<br/>
+			<ul>
+				<li>
+					<b> Легко портировать </b><br/>
+					Написано приложение на языке Rust, который имеет замечательную поддержку WebAssembly / Win / Linux / MacOS / Android. Язык позволяет писать безопасный код, не уступающий по скорости C/C++.<br/>	
+					Для работы движка нужен лишь процессор, что упрощает портирование кода на разные платформы.<br/>
+					Включая Web браузеры!
+				</li>
+				<br/>
+				<li>
+					<b> Скорость </b><br/>
+					Приложение было скомпилировано в WebAssembly, что позволяет получить стабильно высокую частоту кадров даже на смартфоне, без использования SIMD инструкций.<br/>
+				</li>
+				<br/>
+				<li>
+					<b> Легковесность </b><br/>
+					Вся логика, геометрия и математические функции встроены в один бинарный файл, который хорошо сжимается.
+				</li>
+				<br/>
+				<li>
+					<b> Точность </b><br/>
+					Программой производится <a target="_blank" href="/res/perspective_correct_texture_mapping.jpg"><u>перспективная коррекция текстур</u></a>.
+					Поддерживается 32 бита на пиксель (включая альфа канал).<br/>
+					<i>Используя палитру можно ещё сильнее улучшить производительность.</i>
+				</li>
+			</ul>
+			<br/>
+			<b>Сделано используя:</b> Rust, WebAssembly, Sass, TypeScript, <a href="#tiny_lib">tiny_lib</a> <br/>
+		</div>
+		<div class="section">
+			<div id="tiny_lib" class="project">
+				<div class="screenshots">
+					<img src="/res/crates_io.png"/>
+				</div>
+				<div class="description">
+					<div class="title"> tiny_lib </div><br/>
+					<a target="_blank" href="https://github.com/q2p/tiny_lib"> <i class="fab fa-github"></i> <u>GitHub</u></a><br/>
+					<br/>
+					Rust библиотека математических функций для встраиваемых систем и проектов, не использующих стандартную библиотеку. Упрощает работу с векторами и предоставляет математические примитивы и функции различной точности.<br/>
+				</div>
+			</div>
+		</div>
+		<div class="section">
+			<div class="list_title"> Навыки и используемые технологии </div>
+			<br/>
+			<b> System / Backend: </b><br/>
+			Rust, Kotlin, Java, C, C++, Spring, LMDB, RocksDB, Postgres <br/>
+			<br/>
+			<b> Frontend: </b><br/>
+			HTML5, CSS3, JavaScript, Sass, Less, TypeScript, npm <br/>
+			<br/>
+			<b> Английский язык: </b> Upper-Intermediate (B2)
+		</div>
+		<div class="section">
+			<div class="list_title"> Контакты </div>
+			<br/>
+			<i class="fas fa-envelope"></i> <b>Email:</b> <a href="mailto:danilozerovmail@gmail.com">danilozerovmail@gmail.com</a>
+		</div>
+	</body>
+</html>
