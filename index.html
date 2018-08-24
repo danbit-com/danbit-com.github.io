@@ -4,6 +4,10 @@
 		<meta charset="UTF-8">
 		<title> DanBit.tk </title>
 		<meta name="referrer" content="no-referrer">
+		<link rel="preload" as="style" href="styles.css">
+		<link rel="preload" href="noto_regular.ttf">
+		<link rel="preload" href="noto_light.ttf">
+		<link rel="preload" href="noto_extra_light.ttf">
 		<link rel="stylesheet" type="text/css" href="styles.css">
 	</head>
 	<body>
@@ -24,9 +28,15 @@
 						ПРОГРАММИСТ • ЕБЛАН • КУБЕРСПОРТСМЕН
 					</div>
 					<div id="social">
-						<a class="social_icon" target="_blank" href="https://steamcommunity.com/id/danbit-com/" style="background-image:url(logo_steam.png)"></a>
-						<a class="social_icon" target="_blank" href="https://discord.gg/a79M6Qm" style="background-image:url(logo_discord.png)"></a>
-						<a class="social_icon" target="_blank" href="https://vk.com/id81350120" style="background-image:url(logo_vk.png)"></a>
+						<a class="social_icon_container" target="_blank" href="https://steamcommunity.com/id/danbit-com/">
+							<div class="social_icon" style="mask-image:url(logo_steam.png);   -webkit-mask-image:url(logo_steam.png)"></div>
+						</a>
+						<a class="social_icon_container" target="_blank" href="https://discord.gg/a79M6Qm">
+							<div class="social_icon" style="mask-image:url(logo_discord.png); -webkit-mask-image:url(logo_discord.png)"></div>
+						</a>
+						<a class="social_icon_container" target="_blank" href="https://vk.com/id81350120">
+							<div class="social_icon" style="mask-image:url(logo_vk.png);      -webkit-mask-image:url(logo_vk.png)"></div>
+						</a>
 					</div>
 				</div>
 			</div>

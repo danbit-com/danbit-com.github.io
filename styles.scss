@@ -1,7 +1,11 @@
 $itemIconSize: 64px;
-$itemFontSize: 32px;
+$itemIconMargin: 64px;
+
+$itemFontSize: 5px;
 $avatarSize: 192px;
 $avatarPadding: 8px;
+$borderWidth: 2px;
+$iconLift: 6px;
 
 @font-face {
   font-family: '_font_noto_regular';
@@ -15,10 +19,6 @@ $avatarPadding: 8px;
   font-family: '_font_noto_extra_light';
 	src: url("noto_extra_light.ttf") format("truetype");
 }
-@font-face {
-  font-family: '_font_noto_mono_regular';
-	src: url("noto_mono_regular.ttf") format("truetype");
-}
 
 * {
   color: #FFFFFF;
@@ -27,26 +27,27 @@ $avatarPadding: 8px;
   border: none;
   font-family: _font_noto_regular, sans-serif, Arial;
   font-weight: normal;
-  font-size: 16px;
 	outline: none;
 	text-decoration: none;
 }
 
 html {
-  background-color: #23272A;
+	background-color: #23272A;
+	min-width: 512px;
   width: 100%;
-	min-height: 100%;
 }
 
 body {
   width: 100%;
-	min-height: 100%;
+	min-height: 200vh;
 }
 
 #landing {
 	text-align: center;
 	width: 100%;
+	min-height: 512px;
 	height: 100vh;
+	position: relative;
 }
 
 #landing_bg {
@@ -98,7 +99,7 @@ body {
 	width: $avatarSize;
 	height: $avatarSize;
 	border-radius: 100%;
-	border: solid #FFF 2px;
+	border: solid #ffffff $borderWidth;
 	box-sizing: border-box;
 	position: relative;
 	overflow: hidden;
@@ -133,21 +134,48 @@ body {
 #social {
 	display: flex;
 	flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 	align-content: center;
-	margin-top: 16px;
+	margin-top: 16px - $iconLift;
+	width: 3*$itemIconSize + 2*$itemIconMargin;
+	margin-left: auto;
+  margin-right: auto;
+}
+
+.social_icon_container {
+	width: $itemIconSize;
+	height: $itemIconSize+$iconLift;
+	box-sizing: border-box;
+
+	padding-top: $iconLift;
+
+	transition: padding-top 0.2s ease-in;
+
+	&:hover {
+		padding-top: 0px;
+		
+		& .social_icon {
+			background-color: rgba(255, 255, 255, 1);
+		}
+	}
 }
 
 .social_icon {
 	width: $itemIconSize;
 	height: $itemIconSize;
 	border-radius: 100%;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center center;
-	margin-left: 32px;
-	margin-right: 32px;
+
+	-webkit-mask-size: cover;
+	-webkit-mask-position: center;
+	-webkit-mask-repeat: no-repeat;
+	mask-size: cover;
+	mask-position: center;
+	mask-repeat: no-repeat;
+
+	transition: background-color 0.2s ease-in;
+
+	background-color: rgba(255, 255, 255, 0.75);
 }
 
 #landing_arrow_container {
@@ -201,8 +229,7 @@ body {
 	box-sizing: border-box;
 	width: 100%;
 	min-height: 100vh;
-	padding-left: 32px;
-	padding-right: 32px;
+	padding: 48px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
