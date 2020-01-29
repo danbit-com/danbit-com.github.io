@@ -6,7 +6,7 @@ $borderWidth: 2px;
 $iconLift: 6px;
 
 $body_width: 640px;
-$body_padding: 64px;
+$body_padding: 32px;
 
 $screenshots_width: 256px;
 
@@ -24,9 +24,11 @@ $switch_padding: 4px;
 	--swc2: #ffffff;
 }
 
+$dt_bg: #23272A;
+
 [data-theme] {
   --text: #ffffff;
-  --bg: #23272A;
+  --bg:  #23272A;
   --hint: #43474A;
 	--pos: 36px;
 	--swc: #ee477e;
@@ -83,7 +85,7 @@ a {
 }
 
 html {
-	min-width: $body_width + $body_padding;
+	min-width: $body_width + 2 * $body_padding;
 	min-height: 100vh;
   display: flex;
 	flex-direction: column;
@@ -95,13 +97,16 @@ html {
 body {
   width: $body_width;
 	background-color: var(--bg);
+	padding: $body_padding;
+}
+
+.dark_bg {
+	background-color: $dt_bg;
 }
 
 #header {
 	text-align: center;
 	width: 100%;
-	margin-top: 32px;
-	margin-bottom: 32px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -140,12 +145,15 @@ body {
 	// font-family: _font_noto_extra_light;
 }
 
+.v_pad {
+	height: $body_padding;
+}
+
 .section {
 	width: 100%;
-	height: 1px;
-	background-color: var(--hint);
-	margin-top: 32px;
-	margin-bottom: 32px;
+	padding-top: $body_padding;
+	padding-bottom: $body_padding;
+	border-top: 1px solid var(--hint);
 }
 
 .project {
