@@ -77,24 +77,48 @@
 		<div class="section"></div>
 		<div class="project">
 			<div class="screenshots">
-				<img src="/res/software_renderer_1.png"/>
+				<img src="/res/software_renderer_2.png"/>
 			</div>
 			<div class="description">
 				<div class="title"> 3D Software Renderer </div><br/>
-				<a href="/projects/software_renderer/"> <i class="fas fa-cubes"></i> <u>Онлайн Демо</u> </a><br/>
+				<a href="/projects/software_renderer/" target="_blank"> <i class="fas fa-cubes"></i> <u>Онлайн Демо</u> </a><br/>
 				<a href="https://github.com/q2p/software_rendering_experiments"> <i class="fab fa-github"></i> <u>GitHub</u></a><br/>
 				<br/>
-				Легковесный<br/>
-				Легко портируемый<br/>
-				Работает без видеокарты<br/>
-				Работает быстро даже без SIMD инструкций<br/>
-				Вся геометрическая информация встоена в бинарный файл<br/>
-				Перспективная коррекция текстур<br/>
-				32bpp<br/>
-				<b>Язык:</b> Rust<br/>
-				Сделан используя <a href="#tiny_lib"><u>tiny_lib</u></a>.<br/>
+				Традиционно отрисовкой трёхмерной гафики, занимаются видеокарты. Их главным преимуществом является высокая многопоточность.<br/>
+				<br/>
+				Однкако аппаратной отрисовке есть альтернатива: программный ренденринг.
 			</div>
 		</div>
+		<br/>
+		Для улучшения своего понимания трёхмерной графики, я написал <a href="/projects/software_renderer/" target="_blank"> <u>демо</u></a>.<br/>
+		<br/>
+		Особенности и свойства программной отрисовки:<br/>
+		<br/>
+		<li>
+			<b> Легко портировать </b><br/>
+			Написанно приложение на языке Rust, который имеет замечательную поддержку WebAssembly / Win / Linux / MacOS / Android и позволяет писать безопасный код, который не уступает по скорости C/C++.<br/>	
+			Для работы нужен лишь процессор. Что упрощает портирование кода на разные платформы.<br/>
+			Включая Web браузеры!
+		</li>
+		<br/>
+		<li>
+			<b> Скорость </b><br/>
+			Приложенние было скомпилированно в WebAssembly, что позволяет получить стабильно высокую частоту кадров даже на смартфоне, без использования SIMD инструкций.<br/>
+		</li>
+		<br/>
+		<li>
+			<b> Легковестность </b><br/>
+			Вся логика, геометрия и математические функции встроены в один бинарный файл, который хорошо сжимается.
+		</li>
+		<br/>
+		<li>
+			<b> Точность </b><br/>
+			Программой производится <a href="/res/perspective_correct_texture_mapping.jpg" target="_blank"><u>перспективная коррекция текстур</u></a>.
+			Поддерживается 32 бита на пиксель (включая альфа канал).<br/>
+			<i>Используя палитру можно ещё сильнее улулчшить производительность.</i>
+		</li>
+		<br/>
+		<b>Сделан используя:</b> Rust, WebAssembly, Sass, TypeScript, <a href="#tiny_lib">tiny_lib</a> <br/>
 		<div class="section"></div>
 		<div id="tiny_lib" class="project">
 			<div class="screenshots">
@@ -104,7 +128,7 @@
 				<div class="title"> tiny_lib </div><br/>
 				<a href="https://github.com/q2p/tiny_lib"> <i class="fab fa-github"></i> <u>GitHub</u></a><br/>
 				<br/>
-				Rust библиотека математических функций для встраеваемых систем и проектов, не использующих стандартную библиотеку. Упрощает работу с векторами и предоставляет функции<br/>
+				Rust библиотека математических функций для встраеваемых систем и проектов, не использующих стандартную библиотеку. Упрощает работу с векторами и предоставляет математические примитивы и математические функции различной точности.<br/>
 			</div>
 		</div>
 		<div class="section"></div>

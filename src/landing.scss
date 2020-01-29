@@ -173,10 +173,32 @@ body {
 	flex-shrink: 0;
 	flex-grow: 0;
 	margin-right: 16px;
+
+	& > img {
+		display: block;
+		max-width: 100%;
+		margin-top: 16px;
+
+		&:first-child {
+			margin-top: 0px;
+		}
+	}
 }
 
-img {
-	max-width: 100%;
+.svg {
+	display: inline-block;
+  width: 1.1em;
+	height: 1.1em;
+	vertical-align: middle;
+	background-color: var(--text);
+}
+
+.svg.wasm {
+	mask: url(/res/wasm.svg);
+}
+
+.svg.ferris {
+	mask: url(/res/ferris.svg);
 }
 
 li {
