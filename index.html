@@ -5,82 +5,84 @@
 		<title> DanBit.ru </title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<meta name="referrer" content="no-referrer">
-		<link rel="preload" as="style" href="/res/landing1.css">
-		<link rel="preload" href="/res/noto_regular.ttf">
-		<link rel="preload" href="/res/noto_light.ttf">
-		<link rel="preload" href="/res/noto_extra_light.ttf">
-		<link rel="stylesheet" type="text/css" href="/res/landing1.css">
+		<link rel="preload" as="style" href="/res/landing.css">
+		<link rel="preload" as="style" href="/res/landing.js">
+		<link rel="stylesheet" type="text/css" href="/res/landing.css">
+		<script src="https://kit.fontawesome.com/3fd9c8761a.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<div id="landing">
-			<div id="landing_bg">
-					<div id="landing_bg_img" style="background-image:url(/res/mount4.jpg)"></div>
-					<div id="landing_bg_overlay"></div>
+		<script>
+			if (localStorage.getItem("theme") === "true") {
+				document.body.setAttribute("data-theme", "");
+			}
+
+			function switch_theme() {
+				let theme = document.body.toggleAttribute("data-theme");
+				localStorage.setItem("theme", theme);
+			}
+		</script>
+		<div id="header">
+			<div id="huge_wrapper">
+				<div id="my_name"> Озеров Данил </div>
+				<div id="description"> Программист разработчик </div>
 			</div>
-			<div id="landing_center">
-				<div id="huge_wrapper">
-					<div id="avatar_outer">
-						<div id="avatar_inner" style="background-image:url(/res/ava6.jpg)"></div>
-					</div>
-					<div id="my_name">
-						DanBit.ru
-					</div>
-					<div id="description">
-						ПРОГРАММИСТ • ЕБЛАН • КУБЕРСПОРТСМЕН
-					</div>
-					<div id="social">
-						<a class="social_icon_container" target="_blank" href="https://steamcommunity.com/profiles/76561198037904541">
-							<div class="social_icon" style="mask-image:url(/res/logo_steam.png);   -webkit-mask-image:url(/res/logo_steam.png)"></div>
-						</a>
-						<a class="social_icon_container" target="_blank" href="https://discord.gg/a79M6Qm">
-							<div class="social_icon" style="mask-image:url(/res/logo_discord.png); -webkit-mask-image:url(/res/logo_discord.png)"></div>
-						</a>
-						<a class="social_icon_container" target="_blank" href="https://vk.com/id81350120">
-							<div class="social_icon" style="mask-image:url(/res/logo_vk.png);      -webkit-mask-image:url(/res/logo_vk.png)"></div>
-						</a>
-					</div>
-				</div>
+			<div id="switch" onclick="switch_theme()"><div id="switch_circle"></div></div>
+		</div>
+		<div class="list_title"> Мои проекты </div>
+		<div class="section"></div>
+		<div class="project">
+			<div class="screenshots">
+				<img src="/res/qnez_1.png"/>
 			</div>
-			<div id="landing_arrow_container">
-				<div id="landing_arrow"></div>
+			<div class="description">
+				<div class="title"> QnEZ </div><br/>
+				<a href="https://chrome.google.com/webstore/detail/qnez/gioheihcdpjmbmjkbbikkgecjhbmblim"> <i class="fab fa-chrome"></i> <u>Chrome Web Store</u></a><br/>
+				<a href="https://addons.mozilla.org/en-US/firefox/addon/qnez/"> <i class="fab fa-firefox-browser"></i> <u>Firefox Addons</u></a><br/>
+				<a href="https://github.com/q2p/QnEZ/"> <i class="fab fa-github"></i> <u>GitHub</u> </a><br/>
+				<br/>
+				Многозадачное расширение для браузеров
+				Уменьшает использование памяти и нагрузку на процессор путём заморозки неиспользуемых вкладок.<br/>
+				Быстрая загрузка медиа файлов с сайтов, всего за два клика (работает на изображениях, видео, аудио файлах, HTML страницах и ссылках).<br/>
+				Моментальный отклик, даже при нагрузке процессора на 90%, чтобы позволить выгрузить вкладки из памяти и ускорить работу браузера.<br/>
+				Возможность сохранять выбранные вкладоки в закладки и освободить от них окно, всего за пару нажатий.<br/>
+				Можно назначить горячие клавиши, для ускорения взаимодействия.<br/>
 			</div>
 		</div>
-		<div id="second_page">
-			<div id="faq_wrapper">
-				<div class="header"> FAQ </div>
-				<div class="faq_block">
-					<div class="faq_q">
-						Так, блять, ты хто такой?
-					</div>
-					<div class="faq_a">
-						Ебало моё сверху видел? Вот это я.
-					</div>
-				</div>
-				<div class="faq_block">
-					<div class="faq_q">
-						Это ты дурацких поняш рисуешь по всей карте?
-					</div>
-					<div class="faq_a">
-						Ых ых ых, да :D
-					</div>
-				</div>
-				<div class="faq_block">
-					<div class="faq_q">
-						Как сделать такую же гифку?
-					</div>
-					<div class="faq_a">
-						Добавь в други, поясню : )
-					</div>
-				</div>
-				<div class="faq_block">
-					<div class="faq_q">
-						I don't speak vodka...
-					</div>
-					<div class="faq_a">
-						You don't have to, m8.
-					</div>
-				</div>
+		<div class="section"></div>
+		<div class="project">
+			<div class="screenshots">
+				<img src="/res/software_renderer_1.png"/>
 			</div>
-	</div>
+			<div class="description">
+				<div class="title"> Software Renderer </div><br/>
+				<a href="/projects/software_renderer/"> <i class="fas fa-cube"></i> <u>Онлайн Демо</u> </a><br/>
+				<a href="https://github.com/q2p/software_rendering_experiments"> <i class="fab fa-github"></i> <u>GitHub</u></a><br/>
+				<br/>
+				Легковесный<br/>
+				Легко портируемый<br/>
+				Работает без видеокарты<br/>
+				Работает быстро даже без SIMD инструкций<br/>
+				Вся геометрическая информация встоена в бинарный файл<br/>
+				Перспективная коррекция текстур<br/>
+				32bpp<br/>
+				<b>Язык:</b> Rust<br/>
+				Сделан используя <a href="#a_tl"><u>tiny_lib</u></a>.<br/>
+			</div>
+		</div>
+		<div class="section"></div>
+		<div id="a_tl" class="project">
+			<div class="screenshots">
+				<img src="/res/crates_io.png"/>
+			</div>
+			<div class="description">
+				<div class="title"> tiny_lib </div><br/>
+				<a href="https://github.com/q2p/tiny_lib"> <i class="fab fa-github"></i> <u>GitHub</u></a><br/>
+				<br/>
+				Rust библиотека математических функций для встраеваемых систем и проектов, не использующих стандартную библиотеку. Упрощает работу с векторами и предоставляет функции<br/>
+			</div>
+		</div>
+		<div class="section"></div>
+		<div class="list_title"> Контакты </div>
+		<div> <p class="title">Электронная почта:</p> danilozerovmail@gmail.com</div>
 	</body>
 </html>

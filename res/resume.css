@@ -11,13 +11,13 @@
   src: url("noto_extra_light.ttf") format("truetype");
 }
 * {
-  color: #000000;
+  color: #000;
   padding: 0;
   margin: 0;
   border: none;
   font-family: _font_noto_regular, sans-serif, Arial;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 14px;
   outline: none;
   text-decoration: none;
 }
@@ -72,20 +72,24 @@ body {
 .section {
   width: 100%;
   border-top: solid 4px #111;
-  padding-bottom: 24px;
+  padding-bottom: 16px;
 }
 
 .section-text {
   font-weight: bold;
-  font-size: 24px;
-  padding-bottom: 24px;
+  font-size: 22px;
+  padding-bottom: 16px;
+}
+
+.date {
+  display: inline-block;
 }
 
 .title {
   display: block;
   width: 100%;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 #landing_bg {
@@ -98,8 +102,8 @@ body {
 
 .circle {
   display: inline-block;
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
   border-radius: 100%;
   background-color: #bbb;
 }
@@ -108,16 +112,9 @@ body {
   background-color: #f91;
 }
 
-#avatar_inner {
-  position: absolute;
-  top: 8px;
-  bottom: 8px;
-  left: 8px;
-  right: 8px;
-  border-radius: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+li {
+  list-style-position: outside;
+  margin-left: 16px;
 }
 
 #my_name {
