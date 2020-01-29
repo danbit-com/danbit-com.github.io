@@ -40,28 +40,24 @@ $section_padding: 16px;
 	// font: 12pt "Tahoma";
 }
 
+b {
+	font-weight: bold;
+}
+
 html {
-	background-color: #f9726c;
-	min-width: 512px;
-	width: 100%;
-	box-sizing: border-box;
-	display: flex;
-	justify-content: center;
-	align-content: center;
-	padding: 20px;
+	width: 210mm;
+	height: 296.5mm;
+  background-color: #fff;
 }
 
 body {
-	width: 210mm;
-	height: 297mm;
-  background-color: #fff;
-	padding: $spacing;
-	
-	box-shadow: 0 0 20px #111;
+	padding-top: $spacing;
+	padding-left: $spacing;
+	padding-right: $spacing;
 
 	display: grid;
 
-  grid-template-columns: 250px 1fr;
+  grid-template-columns: 200px 1fr;
 	grid-template-rows: 1fr 7fr;
   grid-gap: $spacing;
 	
@@ -112,29 +108,33 @@ body {
 	font-size: $font_title;
 }
 
-#landing_bg {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-}
-
 .circle {
 	display: inline-block;
 	width:  $circle_diameter;
 	height: $circle_diameter;
 	border-radius: 100%;
-	background-color: #bbb
+	background-color: #bbb;
+}
+circle::after {
+	content: '◯';
+	color: #000;
+	background-color: #000;
+}
+.lit .circle::after {
+	content: '⬤';
+	color: #000;
+	background-color: #000;
 }
 
 .lit {
-	background-color: #f91
+	background-color: #f91;
 }
 
 li {
 	list-style-position: outside;
 	margin-left: 16px;
+	list-style-type: '• ';
+	list-style-type: '● ';
 }
 
 #my_name {

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --text: #3A4145;
   --text: #23272A;
@@ -175,6 +176,8 @@ body {
 li {
   margin-left: 24px;
   list-style-position: outside;
+  list-style-type: "● ";
+  list-style-type: "• ";
 }
 
 #social {
