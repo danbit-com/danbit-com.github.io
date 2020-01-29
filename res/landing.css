@@ -117,8 +117,8 @@ body {
 
 #my_name {
   text-align: center;
-  font-size: 26px;
-  font-family: _font_noto_extra_light;
+  font-size: 32px;
+  font-weight: bold;
 }
 
 .section {
@@ -157,6 +157,11 @@ body {
 
 img {
   max-width: 100%;
+}
+
+li {
+  margin-left: 24px;
+  list-style-position: outside;
 }
 
 #social {
