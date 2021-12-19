@@ -395,7 +395,22 @@
 			const phraseDiv = document.getElementById("phrase");
 			const exportBtn = document.getElementById("export_btn");
 
-			const phrases = ["Wololo!","beep-boop!","Never gonna give you up!", "Crudux Cruo!", "Hail to the king, baby!", "Finally, some sci-fi mumbo-jumbo!", "C418!", "640K ought to be enough for anyone!"];
+			const phrases = [
+				"Wololo!",
+				"Hoi! Welcom to, da TEM SHOP!",
+				"Purification in progress!",
+				"It fills you with determination!",
+				"Beep-boop, scanning soup!",
+				"Never gonna give you up!",
+				"Crudux Cruo!",
+				"Hail to the king, baby!",
+				"Finally, some sci-fi mumbo-jumbo!",
+				"Haggstrom by C418!",
+				"640K ought to be enough for anyone!",
+				"Mudcrabs taking over everything!",
+				"Rip & Tear!",
+				"Now on your Tik-Tok feed!",
+			];
 			let phrase_idx = phrases.length-1;
 
 			const ALL_CLASSES = "все классы";
@@ -486,7 +501,7 @@
 						tbody += "<td>"+col+"</td>";
 						tbody_editable += "<td>"+col+"</td>";
 					}
-					tbody_editable += "<td><div class=\"table_del clickable\" onclick=\"deleteRow("+i+")\">- Удалить</div></td></tr>";
+					tbody_editable += "<td><div class=\"table_del clickable\" onclick=\"deleteRow("+i+")\">Удалить</div></td></tr>";
 					tbody += "</tr>";
 
 					const clazz = lines[i][pos_mapping.get("class")];
@@ -507,7 +522,7 @@
 				for (let i = 0; i != lines[0].length; i++) {
 					tbody_editable += "<td class=\"input_td\"><input type=\"text\" placeholder=\""+(input_map.get(lines[0][i]) || "Оценку...")+"\"></input></td>";
 				}
-				tbody_editable += "<td><div class=\"table_set clickable\" onclick=\"setRow()\">+ Записать</div></td></tr>";
+				tbody_editable += "<td><div class=\"table_set clickable\" onclick=\"setRow()\">Записать</div></td></tr>";
 
 				importTable.childNodes[0].innerHTML = thead;
 				importTable.childNodes[1].innerHTML = tbody;
