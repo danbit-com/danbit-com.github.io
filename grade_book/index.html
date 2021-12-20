@@ -151,6 +151,16 @@
 				text-decoration: underline;
 			}
 
+			.table_set:hover {
+				text-decoration: underline;
+				background-color: #058;
+			}
+
+			.table_del:hover {
+				text-decoration: underline;
+				background-color: #a01;
+			}
+
 			.table_del {
 				color: #fff;
 				background-color: #c03;
@@ -245,6 +255,10 @@
 				color: #fff;
 				background-color: #07a;
 				padding: 4px;
+			}
+
+			select:hover {
+				text-decoration: underline;
 			}
 
 			.hidden_default {
@@ -453,6 +467,7 @@
 				return group_entry;
 			}
 			function makeChart(header, titles, values, max, captions) {
+				max = Math.max(max, values.reduce((a,b)=>Math.max(a,b)));
 				let ret = "<div class=\"graph\"><div class=\"graph_wrapper\">";
 				for(let i = 0; i != titles.length; i++) {
 					ret += "<div class=\"graph_section\"><div class=\"graph_field\" style=\"height:224px\">\
@@ -568,7 +583,7 @@
 						graph_body += "<b class=\"title\"><br/><br/>"+rename(subject_name) + ", "+ groupName+":</b><div class=\"graphs_group\">";
 						graph_body += makeChart("", ["Средний<br/>балл", "Медиана<br/>оценок"], [group.average, group.median], 5, n => n.toFixed(2));
 						graph_body += makeChart("Количество баллов<br/>в процентах", ["5", "4", "3", "2", "1"], percentages, 100, n => Math.round(n)+"%");
-						graph_body += makeChart("Количество баллов", ["5", "4", "3", "2", "1"], group.grades.reverse(), 10, n=>n);
+						graph_body += makeChart("Количество баллов", ["5", "4", "3", "2", "1"], group.grades.reverse(), 1, n=>n);
 						graph_body += "</div>";
 					}
 					graph_body += "</div>";
